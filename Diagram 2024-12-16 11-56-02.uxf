@@ -1,0 +1,126 @@
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>440</x><y>24</y><w>336</w><h>208</h></coordinates><panel_attributes>User
+--
+    -String username
+    -String hashedPassword
+    -String userFolder
+    -HashMap&lt;String, Note&gt; notes
+--
+    +User(String username, String hashedPassword, String rootDirectory)
+    +String getUserFolder()
+    +void createUserFolder()
+    +boolean verifyPassword(String enteredPassword)
+    +Note createNote(String title)
+    +SecureNote createSecureNote(String title, String password)
+    +Note getNote(String title)
+    +SecureNote getSecureNote(String title)
+    +void loadNotes()
+    +List&lt;String&gt; listAllNotes()
+    +Note deleteNote(Note deletedNote)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>304</y><w>336</w><h>272</h></coordinates><panel_attributes>Note
+--
+    -String title
+    -String content
+    -String noteFolderPath
+    -List&lt;Image&gt; images
+    -List&lt;Sketch&gt; sketches
+--
+    +Note(String title, String noteFolderPath)
+    +String getTitle()
+    +String getContent()
+    +String getNoteFolderPath()
+    +List&lt;Image&gt; getImages()
+    +List&lt;Sketch&gt; getSketches()
+    +void setContent(String content)
+    +void setImages(List&lt;Image&gt; images)
+    +void setSketches(List&lt;Sketch&gt; sketches)
+    +void addImage(String path, String description)
+    +void addSketch(String path, String description)
+    +void saveNote()
+    +void loadNote()
+    +void loadImages(String imagePath)
+    +void loadSketches(String sketchPath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>656</y><w>336</w><h>80</h></coordinates><panel_attributes>SecureNote
+--
+    -String hashedPassword
+--
+    +SecureNote(String title, String folderPath, String hashedPassword)
+    +boolean verifyPassword(String password)
+    +void saveNote()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>408</y><w>336</w><h>120</h></coordinates><panel_attributes>FileManager
+--
+    +void createFolder(String folderPath)
+    +void deleteFolder(String folderPath)
+    +void saveToTextFile(String filePath, String content)
+    +List&lt;String&gt; loadFromTextFile(String filePath)
+    +List&lt;String&gt; listFilesInFolder(String folderPath)
+    +List&lt;String&gt; listFoldersInDirectory(String directoryPath)
+    +boolean isFileExists(String filePath)
+    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>24</y><w>336</w><h>40</h></coordinates><panel_attributes>SecurityUtils
+--
+    +String hashPassword(String password)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>192</y><w>336</w><h>112</h></coordinates><panel_attributes>Image
+--
+    -String path
+--
+    +Image(String path)
+    +String getPath()
+    +String displayImage()
+    +String getImageName()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>336</y><w>336</w><h>136</h></coordinates><panel_attributes>Sketch
+--
+    -String name
+    -String path
+    -BufferedImage sketchImage
+--
+    +Sketch(String path, String description)
+    +void drawSketch()
+    +void displaySketch()
+    +void saveSketch()
+    +String getPath()
+    +String getName()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>568</y><w>72</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-
+Inherirts ^</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>232</y><w>104</w><h>208</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+has a ^</panel_attributes><additional_attributes>10;10;60;10;60;230;110;230</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>400</y><w>104</w><h>48</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=*
+m2=1
+
+
+&lt; has a</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>224</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>416</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>120</y><w>336</w><h>112</h></coordinates><panel_attributes>UserManager
+--
+    -rootDirectory: String
+    -users: HashMap&lt;String, User&gt;
+--
+    +UserManager(rootDirectory: String)
+    +createUser(username: String, password: String): boolean
+    +getUser(username: String): User
+    +loadUsers(): void
+    +login(enteredUsername: String, enteredPassword: String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>144</y><w>216</w><h>280</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+                                       Uses &gt;</panel_attributes><additional_attributes>30;10;80;10;80;220;240;220;240;330</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>80</y><w>280</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+&lt; Manages
+m1=*
+m2=1</panel_attributes><additional_attributes>10;20;320;20;320;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>224</y><w>56</w><h>200</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+Uses v</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>32</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>40</y><w>504</w><h>688</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>56</y><w>56</w><h>80</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
+Uses ^</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>528</y><w>336</w><h>112</h></coordinates><panel_attributes>DrawingPanel
+--
+    -int x
+    -int y
+    -BufferedImage Image
+    -Graphics2D g2d
+--
+    +DrawingPanel()
+    +void paintComponent(Graphics g)
+    +BufferedImage getImage()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>464</y><w>48</w><h>80</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+m1=1
+m2=1
+Uses</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>
