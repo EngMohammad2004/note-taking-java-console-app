@@ -37,7 +37,7 @@ public class Sketch {
         
         JButton saveButton = new JButton("Save Drawing");
         saveButton.setBounds(10, 10, 150, 30);  // Set the position and size of the button
-        saveButton.addActionListener(e -> {
+        saveButton.addActionListener(_ -> {
             // Save the sketch when the button is pressed
             sketchImage = drawingPanel.getImage();
             drawingFrame.dispose();

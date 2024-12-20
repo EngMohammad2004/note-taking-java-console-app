@@ -52,9 +52,10 @@
     +List&lt;String&gt; listFilesInFolder(String folderPath)
     +List&lt;String&gt; listFoldersInDirectory(String directoryPath)
     +boolean isFileExists(String filePath)
-    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>24</y><w>336</w><h>40</h></coordinates><panel_attributes>SecurityUtils
+    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>24</y><w>336</w><h>48</h></coordinates><panel_attributes>SecurityUtils
 --
-    +String hashPassword(String password)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>192</y><w>336</w><h>112</h></coordinates><panel_attributes>Image
+    +String hashPassword(String password)
+                                كمل يا علي</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>192</y><w>336</w><h>112</h></coordinates><panel_attributes>Image
 --
     -String path
 --
@@ -93,10 +94,10 @@ Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attr
     +createUser(username: String, password: String): boolean
     +getUser(username: String): User
     +loadUsers(): void
-    +login(enteredUsername: String, enteredPassword: String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>144</y><w>216</w><h>280</h></coordinates><panel_attributes>lt=-
+    +login(enteredUsername: String, enteredPassword: String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>744</x><y>144</y><w>224</w><h>280</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-                                       Uses &gt;</panel_attributes><additional_attributes>30;10;80;10;80;220;240;220;240;330</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>80</y><w>280</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+                                       Uses &gt;</panel_attributes><additional_attributes>40;10;90;10;90;220;250;220;250;330</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>80</y><w>280</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
 &lt; Manages
 m1=*
 m2=1</panel_attributes><additional_attributes>10;20;320;20;320;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>224</y><w>56</w><h>200</h></coordinates><panel_attributes>lt=-
@@ -108,10 +109,10 @@ m2=1
 Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>40</y><w>504</w><h>688</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>56</y><w>56</w><h>80</h></coordinates><panel_attributes>lt=-
+Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>64</y><w>56</w><h>72</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses ^</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>528</y><w>336</w><h>112</h></coordinates><panel_attributes>DrawingPanel
+Uses ^</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>528</y><w>336</w><h>112</h></coordinates><panel_attributes>DrawingPanel
 --
     -int x
     -int y
