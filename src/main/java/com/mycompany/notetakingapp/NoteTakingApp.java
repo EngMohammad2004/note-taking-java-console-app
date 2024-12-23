@@ -18,7 +18,7 @@ enum PageState {
 
 
 public class NoteTakingApp {
-    static String rootDirectory = "/home/m7md/Desktop/الكلية/OOP/Java Projects/Note Takeing/NoteTakingApp/rootDirectory";
+    static String rootDirectory = "D:\\الكلية\\OOP\\Java Projects\\Note Takeing\\NoteTakingApp\\rootDirectory";
     static Scanner scanner = new Scanner(System.in);
     static UserManager userManager = new UserManager(rootDirectory);
     static User activeUser;

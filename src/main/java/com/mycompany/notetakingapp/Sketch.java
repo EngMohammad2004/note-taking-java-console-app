@@ -11,9 +11,9 @@ import java.awt.image.BufferedImage;
  *
  * @author alraya
  */
-public class Sketch {
-    private String name;
-    private String path;
+public class Sketch implements Displayable{
+    private final String name;
+    private final String path;
     private BufferedImage sketchImage;
 
     public Sketch(String name, String noteFolderPath) {
@@ -37,7 +37,7 @@ public class Sketch {
         
         JButton saveButton = new JButton("Save Drawing");
         saveButton.setBounds(10, 10, 150, 30);  // Set the position and size of the button
-        saveButton.addActionListener(e -> {
+        saveButton.addActionListener(_ -> {
             // Save the sketch when the button is pressed
             sketchImage = drawingPanel.getImage();
             drawingFrame.dispose();
@@ -60,14 +60,7 @@ public class Sketch {
     }
 
     public void displaySketch() {
-        System.out.println(path);
-        JFrame frame = new JFrame("Image Viewer");
-        ImageIcon imageIcon = new ImageIcon(path); // Create an image icon from the path
-        JLabel label = new JLabel(imageIcon); // Create a label with the image icon
-        frame.add(label); // Add label to the frame
-        frame.setSize(500, 500); // Set frame size
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Dispose on close
-        frame.setVisible(true); // Make the frame visible
+        display(path);
     }
 
 

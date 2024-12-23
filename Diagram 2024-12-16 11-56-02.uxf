@@ -1,4 +1,4 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>440</x><y>24</y><w>336</w><h>208</h></coordinates><panel_attributes>User
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>420</x><y>66</y><w>252</w><h>156</h></coordinates><panel_attributes>User
 --
     -String username
     -String hashedPassword
@@ -15,7 +15,7 @@
     +SecureNote getSecureNote(String title)
     +void loadNotes()
     +List&lt;String&gt; listAllNotes()
-    +Note deleteNote(Note deletedNote)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>304</y><w>336</w><h>272</h></coordinates><panel_attributes>Note
+    +Note deleteNote(Note deletedNote)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>276</y><w>252</w><h>204</h></coordinates><panel_attributes>Note
 --
     -String title
     -String content
@@ -37,13 +37,13 @@
     +void saveNote()
     +void loadNote()
     +void loadImages(String imagePath)
-    +void loadSketches(String sketchPath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>656</y><w>336</w><h>80</h></coordinates><panel_attributes>SecureNote
+    +void loadSketches(String sketchPath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>540</y><w>252</w><h>60</h></coordinates><panel_attributes>SecureNote
 --
     -String hashedPassword
 --
     +SecureNote(String title, String folderPath, String hashedPassword)
     +boolean verifyPassword(String password)
-    +void saveNote()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>408</y><w>336</w><h>120</h></coordinates><panel_attributes>FileManager
+    +void saveNote()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>354</y><w>252</w><h>90</h></coordinates><panel_attributes>FileManager
 --
     +void createFolder(String folderPath)
     +void deleteFolder(String folderPath)
@@ -52,16 +52,17 @@
     +List&lt;String&gt; listFilesInFolder(String folderPath)
     +List&lt;String&gt; listFoldersInDirectory(String directoryPath)
     +boolean isFileExists(String filePath)
-    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>24</y><w>336</w><h>40</h></coordinates><panel_attributes>SecurityUtils
+    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>66</y><w>252</w><h>36</h></coordinates><panel_attributes>SecurityUtils
 --
-    +String hashPassword(String password)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>192</y><w>336</w><h>112</h></coordinates><panel_attributes>Image
+    +String hashPassword(String password)
+                                كمل يا علي</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>192</y><w>252</w><h>72</h></coordinates><panel_attributes>Image
 --
     -String path
 --
     +Image(String path)
     +String getPath()
     +String displayImage()
-    +String getImageName()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>336</y><w>336</w><h>136</h></coordinates><panel_attributes>Sketch
+    +String getImageName()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>300</y><w>252</w><h>102</h></coordinates><panel_attributes>Sketch
 --
     -String name
     -String path
@@ -72,19 +73,19 @@
     +void displaySketch()
     +void saveSketch()
     +String getPath()
-    +String getName()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>568</y><w>72</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-
-Inherirts ^</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>232</y><w>104</w><h>208</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+    +String getName()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>474</y><w>54</w><h>78</h></coordinates><panel_attributes>lt=&lt;&lt;-
+Inherirts ^</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>354</x><y>222</y><w>78</w><h>156</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
 m1=*
 m2=1
-has a ^</panel_attributes><additional_attributes>10;10;60;10;60;230;110;230</additional_attributes></element><element><id>Relation</id><coordinates><x>352</x><y>400</y><w>104</w><h>48</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
+has a ^</panel_attributes><additional_attributes>10;10;60;10;60;230;110;230</additional_attributes></element><element><id>Relation</id><coordinates><x>354</x><y>348</y><w>78</w><h>36</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;
 m1=*
 m2=1
 
 
-&lt; has a</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>224</y><w>24</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>416</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=-
+&lt; has a</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>216</y><w>18</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>360</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>856</x><y>120</y><w>336</w><h>112</h></coordinates><panel_attributes>UserManager
+Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>138</y><w>252</w><h>84</h></coordinates><panel_attributes>UserManager
 --
     -rootDirectory: String
     -users: HashMap&lt;String, User&gt;
@@ -93,25 +94,25 @@ Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attr
     +createUser(username: String, password: String): boolean
     +getUser(username: String): User
     +loadUsers(): void
-    +login(enteredUsername: String, enteredPassword: String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>752</x><y>144</y><w>216</w><h>280</h></coordinates><panel_attributes>lt=-
+    +login(enteredUsername: String, enteredPassword: String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>654</x><y>156</y><w>162</w><h>210</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-                                       Uses &gt;</panel_attributes><additional_attributes>30;10;80;10;80;220;240;220;240;330</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>80</y><w>280</w><h>56</h></coordinates><panel_attributes>lt=&lt;-
+                                       Uses &gt;</panel_attributes><additional_attributes>30;10;80;10;80;220;240;220;240;330</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>108</y><w>210</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
 &lt; Manages
 m1=*
-m2=1</panel_attributes><additional_attributes>10;20;320;20;320;50</additional_attributes></element><element><id>Relation</id><coordinates><x>1016</x><y>224</y><w>56</w><h>200</h></coordinates><panel_attributes>lt=-
+m2=1</panel_attributes><additional_attributes>10;20;320;20;320;50</additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>216</y><w>42</w><h>150</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1
-Uses v</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>32</y><w>104</w><h>40</h></coordinates><panel_attributes>lt=-
+Uses v</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>72</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>768</x><y>40</y><w>504</w><h>688</h></coordinates><panel_attributes>lt=-
+Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>78</y><w>378</w><h>516</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1080</x><y>56</y><w>56</w><h>80</h></coordinates><panel_attributes>lt=-
+Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>96</y><w>42</w><h>54</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses ^</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>24</x><y>528</y><w>336</w><h>112</h></coordinates><panel_attributes>DrawingPanel
+Uses ^</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>444</y><w>252</w><h>84</h></coordinates><panel_attributes>DrawingPanel
 --
     -int x
     -int y
@@ -120,7 +121,25 @@ Uses ^</panel_attributes><additional_attributes>10;80;10;10</additional_attribut
 --
     +DrawingPanel()
     +void paintComponent(Graphics g)
-    +BufferedImage getImage()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>464</y><w>48</w><h>80</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
+    +BufferedImage getImage()</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>228</x><y>396</y><w>36</w><h>60</h></coordinates><panel_attributes>lt=-&gt;&gt;&gt;&gt;&gt;
 m1=1
 m2=1
-Uses</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>
+Uses</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>174</x><y>102</y><w>126</w><h>42</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+Displayable
+--
+    +void display(String path)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>138</y><w>66</w><h>66</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=0..1
+Implements ^</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>78</x><y>120</y><w>180</w><h>192</h></coordinates><panel_attributes>lt=-
+m1=0..n
+m2=0..1
+
+
+
+
+
+
+
+
+
+&lt; Implements</panel_attributes><additional_attributes>260;300;260;260;10;260;10;10;160;10</additional_attributes></element></diagram>
