@@ -52,10 +52,9 @@
     +List&lt;String&gt; listFilesInFolder(String folderPath)
     +List&lt;String&gt; listFoldersInDirectory(String directoryPath)
     +boolean isFileExists(String filePath)
-    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>66</y><w>252</w><h>36</h></coordinates><panel_attributes>SecurityUtils
+    +String loadFileAsString(String filePath)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>66</y><w>252</w><h>30</h></coordinates><panel_attributes>SecurityUtils
 --
-    +String hashPassword(String password)
-                                كمل يا علي</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>192</y><w>252</w><h>72</h></coordinates><panel_attributes>Image
+    +String hashPassword(String password)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>192</y><w>252</w><h>72</h></coordinates><panel_attributes>Image
 --
     -String path
 --
@@ -85,7 +84,7 @@ m2=1
 &lt; has a</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>216</y><w>18</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>360</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>138</y><w>252</w><h>84</h></coordinates><panel_attributes>UserManager
+Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>144</y><w>252</w><h>84</h></coordinates><panel_attributes>UserManager
 --
     -rootDirectory: String
     -users: HashMap&lt;String, User&gt;
@@ -97,22 +96,22 @@ Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attr
     +login(enteredUsername: String, enteredPassword: String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>654</x><y>156</y><w>162</w><h>210</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-                                       Uses &gt;</panel_attributes><additional_attributes>30;10;80;10;80;220;240;220;240;330</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>108</y><w>210</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
+                                       Uses &gt;</panel_attributes><additional_attributes>30;10;80;10;80;220;240;220;240;330</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>108</y><w>210</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
 &lt; Manages
 m1=*
-m2=1</panel_attributes><additional_attributes>10;20;320;20;320;50</additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>216</y><w>42</w><h>150</h></coordinates><panel_attributes>lt=-
+m2=1</panel_attributes><additional_attributes>10;20;320;20;320;60</additional_attributes></element><element><id>Relation</id><coordinates><x>852</x><y>222</y><w>42</w><h>144</h></coordinates><panel_attributes>lt=-
 m1=1
 m2=1
-Uses v</panel_attributes><additional_attributes>10;10;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>72</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=-
+Uses v</panel_attributes><additional_attributes>10;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>72</y><w>78</w><h>30</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
 Uses &gt;</panel_attributes><additional_attributes>10;20;110;20</additional_attributes></element><element><id>Relation</id><coordinates><x>666</x><y>78</y><w>378</w><h>516</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>96</y><w>42</w><h>54</h></coordinates><panel_attributes>lt=-
+Uses ^</panel_attributes><additional_attributes>10;830;570;830;570;10;530;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>90</y><w>42</w><h>66</h></coordinates><panel_attributes>lt=-
 m1=*
 m2=1
-Uses ^</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>444</y><w>252</w><h>84</h></coordinates><panel_attributes>DrawingPanel
+Uses ^</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>108</x><y>444</y><w>252</w><h>84</h></coordinates><panel_attributes>DrawingPanel
 --
     -int x
     -int y
@@ -128,11 +127,11 @@ Uses</panel_attributes><additional_attributes>10;80;10;10</additional_attributes
 Displayable
 --
     +void display(String path)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>234</x><y>138</y><w>66</w><h>66</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=0..1
-Implements ^</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>78</x><y>120</y><w>180</w><h>192</h></coordinates><panel_attributes>lt=-
-m1=0..n
-m2=0..1
+m1=*
+m2=1
+Implements ^</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>78</x><y>120</y><w>174</w><h>192</h></coordinates><panel_attributes>lt=-
+m1=*
+m2=1
 
 
 

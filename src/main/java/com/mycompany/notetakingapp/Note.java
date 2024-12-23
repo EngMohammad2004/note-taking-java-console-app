@@ -5,22 +5,25 @@
 package com.mycompany.notetakingapp;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
+ * كلاس يمثل ملاحظة تحتوي على عنوان، محتوى، صور، ورسومات.
  *
  * @author alraya
  */
 public class Note {
-    private String title, content, noteFolderPath;
-    private List<Image> images = new ArrayList<>();
-    private List<Sketch> sketchs = new ArrayList<>();
+    private String title, content, noteFolderPath; // عنوان الملاحظة، محتواها، ومسار المجلد الخاص بها
+    private List<Image> images = new ArrayList<>(); // قائمة بالصور المرتبطة بالملاحظة
+    private List<Sketch> sketchs = new ArrayList<>(); // قائمة بالرسومات المرتبطة بالملاحظة
     
+    // المُنشئ لتعيين العنوان ومسار المجلد الخاص بالملاحظة
     public Note(String title, String noteFolderPath) {
         this.title = title;
         this.noteFolderPath = noteFolderPath;
-
-        this.content = "";
+        this.content = ""; // المحتوى الافتراضي فارغ
     }
 
+    // دوال getter للحصول على قيم الخصائص
     public String getTitle() {
         return title;
     }
@@ -41,6 +44,7 @@ public class Note {
         return sketchs;
     }
 
+    // دوال setter لتعيين قيم الخصائص
     public void setContent(String content) {
         this.content = content;
     }
@@ -53,71 +57,78 @@ public class Note {
         this.sketchs = sketchs;
     }
     
+    // إضافة صورة جديدة إلى الملاحظة
     public void addImage(String path) {
-        Image image = new Image(path);
-        images.addLast(image);
+        Image image = new Image(path); // إنشاء كائن صورة باستخدام المسار
+        images.add(image); // إضافة الصورة إلى القائمة
     }
     
+    // إضافة رسم جديد إلى الملاحظة
     public void addSketch(String name) {
-        Sketch sketch = new Sketch(name, noteFolderPath);
-        sketch.drawSketch();
-        sketchs.addLast(sketch);
+        Sketch sketch = new Sketch(name, noteFolderPath); // إنشاء كائن رسم
+        sketch.drawSketch(); // استدعاء الدالة لرسم التخطيط
+        sketchs.add(sketch); // إضافة الرسم إلى القائمة
     }
     
-    public void saveNote(){
+    // حفظ الملاحظة إلى ملفات
+    public void saveNote() {
+        // إذا لم يكن المجلد موجودًا، يتم إنشاؤه
         if (!FileManager.isFileExists(noteFolderPath)) {
-            FileManager.createFolder(noteFolderPath);
-            FileManager.createFolder(noteFolderPath + "/sketchs");
+            FileManager.createFolder(noteFolderPath); // إنشاء المجلد الأساسي
+            FileManager.createFolder(noteFolderPath + "/sketchs"); // إنشاء مجلد الرسومات
         }
         
+        // حفظ المحتوى في ملف نصي
         FileManager.saveToTextFile(noteFolderPath + "/content.txt", content);
         
+        // حفظ مسارات الصور في ملف نصي
         String imagesString = "";
-        for(Image image : this.images) {
+        for (Image image : this.images) {
             imagesString += image.getPath() + "\n";
         }
         FileManager.saveToTextFile(noteFolderPath + "/images.txt", imagesString);
         
-        for(Sketch sketch : this.sketchs) {
+        // حفظ الرسومات
+        for (Sketch sketch : this.sketchs) {
             sketch.saveSketch();
         }
-        
     }
     
+    // تحميل الملاحظة من الملفات
     public void loadNote() {
         try {
-            this.content = (FileManager.loadFileAsString(noteFolderPath + "/content.txt"));
-            loadImages(noteFolderPath + "/images.txt");
-            loadSketchs();
+            this.content = FileManager.loadFileAsString(noteFolderPath + "/content.txt"); // تحميل المحتوى
+            loadImages(noteFolderPath + "/images.txt"); // تحميل الصور
+            loadSketchs(); // تحميل الرسومات
             
         } catch (Exception e) {
             System.out.println("Error Loading Note: " + e);
         }
     }
     
+    // تحميل الصور من ملف النص
     public void loadImages(String imagePath) {
         try {
-            List<String> lines = FileManager.loadFromTextFile(imagePath);
+            List<String> lines = FileManager.loadFromTextFile(imagePath); // قراءة المسارات من الملف النصي
             
-            for(String line : lines) {
-                images.add(new Image(line));
+            for (String line : lines) {
+                images.add(new Image(line)); // إضافة كل صورة إلى القائمة
             }
         } catch (Exception e) {
             System.out.println("Error Loading Images: " + e);
         }
     }
     
+    // تحميل الرسومات من المجلد
     public void loadSketchs() {
         try {
-            List<String> sketchList = FileManager.listFilesInFolder(noteFolderPath + "/sketchs");
-            for(String sketch : sketchList) {
-                String name = sketch.replace(".png", "");
-                sketchs.add(new Sketch(name, noteFolderPath));
+            List<String> sketchList = FileManager.listFilesInFolder(noteFolderPath + "/sketchs"); // قراءة أسماء الملفات في مجلد الرسومات
+            for (String sketch : sketchList) {
+                String name = sketch.replace(".png", ""); // إزالة الامتداد من اسم الملف
+                sketchs.add(new Sketch(name, noteFolderPath)); // إضافة الرسم إلى القائمة
             }
         } catch (Exception e) {
             System.out.println("Error Loading Sketchs: " + e);
         }
     }
-    
-    
 }

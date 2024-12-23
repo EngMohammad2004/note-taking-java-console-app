@@ -5,39 +5,41 @@
 package com.mycompany.notetakingapp;
 
 /**
+ * كلاس يمثل صورة مع مسارها ويحتوي على وظائف لعرضها والحصول على اسمها.
  *
  * @author alraya
  */
-public class Image implements Displayable{
-    private final String path;
+public class Image implements Displayable {
+    private String path; // المسار الخاص بالصورة
 
+    // المُنشئ لتعيين مسار الصورة عند إنشاء الكائن
     public Image(String path) {
         this.path = path;
     }
 
+    // دالة لإرجاع المسار الخاص بالصورة
     public String getPath() {
         return path;
     }
 
-    // Method to display image
+    // دالة لعرض الصورة مع وصف بسيط
     public void displayImage() {
         display(path);
     }
 
+    // دالة للحصول على اسم الصورة بدون المسار وامتداد الملف
     public String getImageName() {
-        String name = this.path;
-        // Handle both forward and backward slashes
-        int lastSlashIndex = Math.max(name.lastIndexOf('/'), name.lastIndexOf('\\'));
+        String name = this.path; // نسخ المسار إلى متغير مؤقت
+        int lastSlashIndex = name.lastIndexOf('/'); // الحصول على موقع آخر '/'
         if (lastSlashIndex != -1) {
-            name = name.substring(lastSlashIndex + 1);
+            name = name.substring(lastSlashIndex + 1); // استخراج النص بعد آخر '/'
         }
-
-        int dotIndex = name.lastIndexOf('.');
+        
+        int dotIndex = name.lastIndexOf('.'); // الحصول على موقع آخر '.'
         if (dotIndex != -1) {
-            name = name.substring(0, dotIndex);
+            name = name.substring(0, dotIndex); // إزالة الامتداد
         }
-
-        return name;
+        
+        return name; // إرجاع اسم الصورة
     }
-
 }

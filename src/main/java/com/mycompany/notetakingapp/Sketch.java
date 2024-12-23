@@ -8,71 +8,78 @@ import javax.swing.*;
 import java.awt.image.BufferedImage;
 
 /**
- *
- * @author alraya
+ * كلاس يمثل رسمًا (Sketch) يمكن إنشاؤه وعرضه وحفظه.
  */
-public class Sketch implements Displayable{
-    private final String name;
-    private final String path;
-    private BufferedImage sketchImage;
+public class Sketch implements Displayable {
+    private String name; // اسم الرسم
+    private String path; // المسار الذي سيتم حفظ الرسم فيه
+    private BufferedImage sketchImage; // صورة الرسم
 
+    /**
+     * المُنشئ لإنشاء كائن Sketch.
+     *
+     * @param name اسم الرسم.
+     * @param noteFolderPath مسار المجلد الخاص بالملاحظة.
+     */
     public Sketch(String name, String noteFolderPath) {
-        // Initially, path is empty until the sketch is created and saved
+        // تحديد مسار حفظ الرسم
         this.path = noteFolderPath + "/sketchs/" + name + ".png";
         this.name = name;
     }
 
-    // Method to open drawing window and return the path where the sketch is saved
+    /**
+     * دالة لفتح نافذة رسم جديدة والسماح للمستخدم بالرسم.
+     * يتم حفظ الرسم عند الضغط على زر الحفظ.
+     */
     public void drawSketch() {
-        // Create a JFrame to open the drawing window
-        JFrame drawingFrame = new JFrame("Draw Your Sketch");
+        // إنشاء نافذة JFrame لفتح واجهة الرسم
+        JFrame drawingFrame = new JFrame("ارسم الرسم الخاص بك");
         drawingFrame.setSize(500, 500);
         drawingFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        // Create an instance of the DrawingPanel
+        // إنشاء لوحة الرسم DrawingPanel
         DrawingPanel drawingPanel = new DrawingPanel();
         drawingFrame.add(drawingPanel);
 
-        drawingFrame.setVisible(true); // Make the frame visible
-        
-        JButton saveButton = new JButton("Save Drawing");
-        saveButton.setBounds(10, 10, 150, 30);  // Set the position and size of the button
+        // زر لحفظ الرسم
+        JButton saveButton = new JButton("حفظ الرسم");
+        saveButton.setBounds(10, 10, 150, 30); // تحديد موضع وحجم الزر
         saveButton.addActionListener(_ -> {
-            // Save the sketch when the button is pressed
-            sketchImage = drawingPanel.getImage();
-            drawingFrame.dispose();
+            // حفظ الرسم عند الضغط على الزر
+            sketchImage = drawingPanel.getImage(); // الحصول على الصورة من اللوحة
+            drawingFrame.dispose(); // إغلاق نافذة الرسم
         });
 
-        drawingPanel.add(saveButton);
+        drawingPanel.add(saveButton); // إضافة الزر إلى لوحة الرسم
 
-        drawingFrame.setLayout(null);  // Disable the default layout manager
-        drawingFrame.setVisible(true); // Make the frame visible
-
-        // // Simulate waiting for the user to finish drawing (could be a button to save the drawing in real case)
-        // try {
-        //     Thread.sleep(10000); // Wait 10 seconds (simulate the drawing time)
-        //     sketchImage = drawingPanel.getImage();
-        // } catch (InterruptedException e) {
-        //     e.printStackTrace();
-        // }
-        
-
+        drawingFrame.setLayout(null); // تعطيل مدير التخطيط الافتراضي
+        drawingFrame.setVisible(true); // جعل النافذة مرئية
     }
 
+    /**
+     * دالة لعرض الرسم المحفوظ باستخدام نافذة عرض.
+     */
     public void displaySketch() {
         display(path);
     }
 
-
+    /**
+     * دالة لحفظ الرسم كملف صورة PNG.
+     */
     public void saveSketch() {
-        FileManager.saveAsPNG(path, sketchImage);
+        FileManager.saveAsPNG(path, sketchImage); // استخدام FileManager لحفظ الصورة
     }
 
-    // Getter for the sketch file path
+    /**
+     * دالة لاسترجاع مسار ملف الرسم.
+     */
     public String getPath() {
         return this.path;
     }
 
+    /**
+     * دالة لاسترجاع اسم الرسم.
+     */
     public String getName() {
         return this.name;
     }

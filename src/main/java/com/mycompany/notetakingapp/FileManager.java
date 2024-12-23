@@ -23,125 +23,130 @@ import javax.imageio.ImageIO;
 
 public class FileManager {
 
-    // Create a folder if it does not exist
+    // إنشاء مجلد إذا لم يكن موجوداً
     public static void createFolder(String folderPath) {
         File folder = new File(folderPath);
-        if (!folder.exists()) {
-            folder.mkdir();
+        if (!folder.exists()) { // إذا المجلد مش موجود
+            folder.mkdir(); // إنشاء المجلد
         }
     }
 
-    // Delete a folder and all its contents
+    // حذف مجلد وكل الملفات الموجودة بداخله
     public static void deleteFolder(String folderPath) {
         File folder = new File(folderPath);
-        if (folder.exists()) {
+        if (folder.exists()) { // إذا المجلد موجود
+            // المرور على جميع الملفات داخل المجلد
             for (File file : folder.listFiles()) {
                 if (file.isDirectory()) {
+                    // إذا كان الملف مجلد نعيد استدعاء الدالة لحذفه
                     deleteFolder(file.getAbsolutePath());
                 } else {
+                    // إذا كان الملف ملف عادي نزيله
                     file.delete();
                 }
             }
-            folder.delete();
+            folder.delete(); // حذف المجلد بعد حذف الملفات داخله
         }
     }
 
-    // Save text content to a file
+    // حفظ محتوى نصي في ملف
     public static void saveToTextFile(String filePath, String content) {
         try (FileWriter writer = new FileWriter(filePath)) {
-            writer.write(content);
+            writer.write(content); // كتابة المحتوى في الملف
         } catch (IOException e) {
-            System.out.println("Error writing to file: " + filePath);
+            System.out.println("خطأ في الكتابة إلى الملف: " + filePath);
         }
     }
 
-    // Load text content from a file
-    // Load text content from a file and return it as a list of lines
+    // تحميل محتوى نصي من ملف وإرجاعه كقائمة من الأسطر
     public static List<String> loadFromTextFile(String filePath) {
         try {
-            return Files.readAllLines(Path.of(filePath));
+            return Files.readAllLines(Path.of(filePath)); // قراءة كل الأسطر من الملف
         } catch (IOException e) {
-            System.out.println("Error reading from file: " + filePath);
-            return new ArrayList<>(); // Return an empty list in case of error
+            System.out.println("خطأ في قراءة الملف: " + filePath);
+            return new ArrayList<>(); // إرجاع قائمة فارغة في حالة حدوث خطأ
         }
     }
 
-    // List all files in a folder
+    // عرض جميع الملفات داخل مجلد معين
     public static List<String> listFilesInFolder(String folderPath) {
         File file = new File(folderPath);
         String[] directories = file.list(new FilenameFilter() {
-        @Override
-        public boolean accept(File current, String name) {
-          return !new File(current, name).isDirectory();
-        }
+            @Override
+            public boolean accept(File current, String name) {
+                return !new File(current, name).isDirectory(); // تصفية الملفات فقط (ليس مجلدات)
+            }
         });
-        return Arrays.asList(directories);
+        return Arrays.asList(directories); // إرجاع قائمة بالملفات
     }
 
-    // List all folders in a directory
+    // عرض جميع المجلدات داخل مجلد معين
     public static List<String> listFoldersInDirectory(String directoryPath) {
         File file = new File(directoryPath);
-        
-        if (!file.exists() || !file.isDirectory()) {
-            System.out.println("Invalid directory path: " + directoryPath);
-            return new ArrayList<>(); // Return an empty list if the directory is invalid
+
+        if (!file.exists() || !file.isDirectory()) { // إذا كان المسار غير صحيح أو ليس مجلداً
+            System.out.println("مسار المجلد غير صالح: " + directoryPath);
+            return new ArrayList<>(); // إرجاع قائمة فارغة
         }
-    
+
         String[] directories = file.list(new FilenameFilter() {
             @Override
             public boolean accept(File current, String name) {
-                return new File(current, name).isDirectory();
+                return new File(current, name).isDirectory(); // تصفية المجلدات فقط
             }
         });
-    
-        // Handle case where directories is null
+
+        // التحقق من حالة وجود المجلدات
         if (directories == null) {
-            System.out.println("No folders found or unable to access the directory.");
+            System.out.println("لا توجد مجلدات أو لا يمكن الوصول إلى المجلد.");
             return new ArrayList<>();
         }
-    
-        return Arrays.asList(directories);
+
+        return Arrays.asList(directories); // إرجاع قائمة بالمجلدات
     }
 
+    // التحقق من وجود ملف في المسار المحدد
     public static boolean isFileExists(String filePath) {
         File file = new File(filePath);
-        return file.exists();
+        return file.exists(); // إرجاع ما إذا كان الملف موجوداً
     }
 
+    // تحميل محتوى الملف كـ String
     public static String loadFileAsString(String filePath) {
         try {
-            return Files.readString(Path.of(filePath));
+            return Files.readString(Path.of(filePath)); // قراءة محتوى الملف كـ String
         } catch (IOException e) {
-            System.out.println("Error reading from file: " + filePath);
-            return ""; // Return an empty string in case of error
+            System.out.println("خطأ في قراءة الملف: " + filePath);
+            return ""; // إرجاع سلسلة فارغة في حالة حدوث خطأ
         }
     }
 
+    // حفظ صورة بصيغة PNG
     public static String saveAsPNG(String path, BufferedImage image) {
         try {
-            // التحقق من أن الصورة مش null
+            // التحقق من أن الصورة ليست null
             if (image == null) {
-                throw new IllegalArgumentException("Image is null, cannot save.");
+                throw new IllegalArgumentException("الصورة فارغة (null)، لا يمكن حفظها.");
             }
 
             File outputFile = new File(path);
-            boolean isSaved = ImageIO.write(image, "PNG", outputFile);
+            boolean isSaved = ImageIO.write(image, "PNG", outputFile); // محاولة حفظ الصورة
 
             if (isSaved) {
-                return outputFile.getAbsolutePath();
+                return outputFile.getAbsolutePath(); // إرجاع المسار إذا تم الحفظ بنجاح
             } else {
-                throw new IOException("Failed to save image.");
+                throw new IOException("فشل في حفظ الصورة.");
             }
         } catch (IllegalArgumentException e) {
             // في حالة الصورة null
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("خطأ: " + e.getMessage());
         } catch (IOException e) {
             // في حالة وجود مشاكل أثناء الحفظ
-            System.out.println("Error: Failed to save the image. " + e.getMessage());
+            System.out.println("خطأ: فشل في حفظ الصورة. " + e.getMessage());
         } catch (Exception e) {
             // في حالة وجود أخطاء غير متوقعة
-            System.out.println("Unexpected error: " + e.getMessage());
+            System.out.println("خطأ غير متوقع: " + e.getMessage());
         }
-        return null; // لو فشل الحفظ، نرجع null
+        return null; // في حالة فشل الحفظ، إرجاع null
     }
 }
